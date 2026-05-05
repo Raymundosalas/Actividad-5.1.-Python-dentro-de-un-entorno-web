@@ -1,0 +1,75 @@
+# Importar la librería Pandas
+import pandas as pd
+
+# ================================
+# CREACIÓN DE LOS DATOS
+# ================================
+data = {
+    "Nombre": [
+        "Ana", "Luis", "Carlos", "María", "Sofía",
+        "Jorge", "Elena", "Pedro", "Lucía", "Miguel"
+    ],
+    "Genero": [
+        "F", "M", "M", "F", "F",
+        "M", "F", "M", "F", "M"
+    ],
+    "Edad": [
+        20, 22, 21, 23, 20,
+        24, 22, 23, 21, 25
+    ],
+    "Calificacion": [
+        85, 90, 78, 92, 88,
+        75, 95, 80, 89, 91
+    ]
+}
+
+# ================================
+# CREAR EL DATAFRAME
+# ================================
+df = pd.DataFrame(data)
+
+# ================================
+# MOSTRAR EL DATAFRAME
+# ================================
+print("===== DATAFRAME =====")
+print(df)
+
+# ================================
+# INFORMACIÓN GENERAL
+# ================================
+print("\n===== INFORMACIÓN =====")
+print(df.info())
+
+# ================================
+# ESTADÍSTICAS GENERALES
+# ================================
+print("\n===== ESTADÍSTICAS =====")
+print(df.describe())
+
+# ================================
+# CÁLCULOS ESPECÍFICOS
+# ================================
+promedio = df["Calificacion"].mean()
+desviacion = df["Calificacion"].std()
+
+# ================================
+# RESULTADOS
+# ================================
+print("\n===== RESULTADOS =====")
+print(f"Promedio de calificaciones: {promedio:.2f}")
+print(f"Desviación estándar: {desviacion:.2f}")
+
+# ================================
+# EXTRA (OPCIONAL)
+# ================================
+# Ordenar por calificación
+df_ordenado = df.sort_values(by="Calificacion", ascending=False)
+
+print("\n===== DATAFRAME ORDENADO =====")
+print(df_ordenado)
+
+# Filtrar estudiantes con calificación mayor a 85
+filtro = df[df["Calificacion"] > 85]
+
+print("\n===== ESTUDIANTES CON CALIFICACIÓN > 85 =====")
+print(filtro)
